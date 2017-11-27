@@ -60,7 +60,6 @@ int main()
   // skonfiguruj strumienie wejścia/wyjścia
   fdev_setup_stream(&uart_file, uart_transmit, uart_receive, _FDEV_SETUP_RW);
   stdin = stdout = stderr = &uart_file;
-  // odmaskuj przerwania
 
   DDRD |= 4; // ustawienie pinu 2 na wyjscie
 
@@ -70,7 +69,7 @@ int main()
   TCNT1 = 0;                // preload timer 65536-16MHz/256/1Hz
   TIMSK1 |= (1 << TOIE1);   // enable timer overflow interrupt
   
-  sei();
+  sei();        //wlaczenie przerwan
   while(1) {
    
   }

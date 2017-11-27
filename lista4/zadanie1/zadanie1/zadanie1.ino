@@ -45,11 +45,10 @@ static int16_t time_reset = 0;
 ISR(TIMER1_OVF_vect)
 { 
   time_reset++;
-  printf("Time: %d\n", time_reset);
-  PORTD |= 4; 
-  _delay_ms(50); // 1/20 s 
-  PORTD = PORTD&(~4);
-  TCNT1 = 3277;            // preload timer 50ms
+  PORTD |= 4; //zapalenie diody na pinie 2
+  printf("Time: %d\n", time_reset); //ta instrukcja sama wygeneruje delay ;)
+  TCNT1 = 3277; // preload timer 50ms - mniej wiecej tyle trwa wykonanie printf
+  PORTD = PORTD&(~4);     //zgaszenie diody na pinie 2 
 }
 
 

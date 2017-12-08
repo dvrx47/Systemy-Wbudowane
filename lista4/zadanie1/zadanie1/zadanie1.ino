@@ -46,7 +46,7 @@ ISR(TIMER1_OVF_vect)
 { 
   time_reset++;
   PORTD |= 4; //zapalenie diody na pinie 2
-  printf("Time: %d\n", time_reset); //ta instrukcja sama wygeneruje delay ;)
+  printf("Time: %d\n", time_reset); 
   TCNT1 = 3277; // preload timer 50ms - mniej wiecej tyle trwa wykonanie printf
   PORTD = PORTD&(~4);     //zgaszenie diody na pinie 2 
 }
